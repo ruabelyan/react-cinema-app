@@ -10,12 +10,12 @@ jobs:
       name: node/default
     steps:
       - checkout
-      - node/install-packages
-      - run:
-          name: Run tests
-          command: npm test
+      - node/with-cache
+      steps:
+        - run:npm install
+         - run:npm test
 
 workflows:
-  sample: 
+  build-and-test: 
     jobs:
       - build-and-test
